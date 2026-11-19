@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile King | شحن ألفا و تاتش</title>
+<style>
+*{box-sizing:border-box;font-family:system-ui,Tahoma} body{margin:0;background:#0f1115;color:#fff;padding:16px}
+.header{text-align:center;padding:20px 10px} .logo{font-size:32px;font-weight:900} .logo span{color:#ffd700}
+.logo-img{max-width:180px;max-height:120px;border-radius:16px;margin:0 auto}
+.sub{color:#aaa;margin-top:6px}
+.announce{display:none;background:#ffd700;color:#000;padding:12px;border-radius:12px;text-align:center;font-weight:800;margin:10px 0}
+.info{text-align:center;color:#aaa;font-size:14px;line-height:1.8}
+.socials{display:flex;gap:10px;justify-content:center;margin:12px 0;flex-wrap:wrap}
+.socials a{padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;color:#fff}
+.tabs{display:flex;gap:10px;position:sticky;top:10px;z-index:10} .tab{flex:1;padding:14px;border:0;border-radius:14px;font-weight:800;font-size:18px;cursor:pointer}
+.tab.alfa{background:#e11d2e;color:#fff} .tab.touch{background:#0070ff;color:#fff} .tab.active{outline:3px solid #ffd700}
+.section{margin-top:22px} .section h2{font-size:20px;margin:0 0 12px} .section-img{width:100%;height:140px;object-fit:cover;border-radius:16px;margin-bottom:12px} .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#1c1f27;border-radius:16px;padding:14px;text-align:center;overflow:hidden} .card b{font-size:18px;display:block}
+.card-img{width:100%;height:110px;object-fit:cover;border-radius:12px;margin-bottom:10px}
+.price{color:#ffd700;font-weight:900;font-size:19px;margin:8px 0} .btn{display:block;background:#25D366;color:#fff;text-decoration:none;padding:10px;border-radius:10px;font-weight:700}
+.footer{text-align:center;color:#888;margin:30px 0;font-size:13px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="header"><img id="logoImg" class="logo-img" alt=""><div class="logo" id="logoText">Mobile <span>King</span></div><div class="sub">شحن ألفا و تاتش - الأسعار بالليرة اللبنانية</div><div class="sub" id="update"></div></div>
+<div id="announcement" class="announce"></div>
+<div id="info" class="info"></div>
+<div id="socials" class="socials"></div>
+<div class="tabs"><button class="tab alfa active" onclick="show('alfa',this)">Alfa ألفا</button><button class="tab touch" onclick="show('touch',this)">Touch تاتش</button></div>
+<div id="content"></div>
+<div class="footer" id="footer"></div>
+<script>
+const IMAGES = {
+logo: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/logo.jpg",
+alfa_ushare: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfaushare.jpg",
+alfa_dollars: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfadolars.jpg",
+alfa_days: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfadays.jpg",
+touch_dollars: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchdolars.jpg",
+touch_days: "",
+alfa_card_0: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard450.jpg",
+alfa_card_1: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard758.jpg",
+alfa_card_2: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard1515.jpg",
+alfa_card_3: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard2273.jpg",
+touch_card_0: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard450.jpg",
+touch_card_1: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard758.jpg",
+touch_card_2: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard1515.jpg",
+touch_card_3: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard2273.jpg"
+};
+let DATA=null;
+function fmt(n){return n.toLocaleString('en-US')}
+function getSectionImage(type,key){
+if(type==='alfa' && key==='ushare') return IMAGES.alfa_ushare;
+if(type==='alfa' && key==='dollars') return IMAGES.alfa_dollars;
+if(type==='alfa' && key==='days') return IMAGES.alfa_days;
+if(type==='touch' && key==='dollars') return IMAGES.touch_dollars;
+if(type==='touch' && key==='days') return IMAGES.touch_days;
+return '';
+}
+function getCardImage(type,index){
+if(type==='alfa') return IMAGES['alfa_card_'+index];
+if(type==='touch') return IMAGES['touch_card_'+index];
+return '';
+}
+function show(type,btn){
+document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active')}); btn.classList.add('active');
+let html='';
+const sections = type==='alfa' ? [['U_share','ushare'],['دولارات','dollars'],['ايام صلاحية','days'],['تشريجات','cards']] : [['دولارات','dollars'],['ايام صلاحية','days'],['تشريجات','cards']];
+sections.forEach(function(sec){
+const title=sec[0]; const key=sec[1];
+const secImg=getSectionImage(type,key);
+html+='<div class="section"><h2>'+title+' - '+(type==='alfa'?'ألفا':'تاتش')+'</h2>';
+if(secImg) html+='<img src="'+secImg+'" class="section-img">';
+html+='<div class="grid">';
+DATA[type][key].forEach(function(item,i){
+const msg = encodeURIComponent('مرحبا Mobile King، بدي اطلب '+title+' '+type+' - '+item.name+' بسعر '+fmt(item.price)+' ل.ل');
+let cardImg='';
+if(key==='cards') cardImg=getCardImage(type,i);
+html+='<div class="card">';
+if(cardImg) html+='<img src="'+cardImg+'" class="card-img">';
+html+='<b>'+item.name+'</b><div class="price">'+fmt(item.price)+' ل.ل</div><a class="btn" href="https://wa.me/'+DATA.whatsapp+'?text='+msg+'" target="_blank">اطلب واتساب</a></div>';
+});
+html+='</div></div>';
+});
+document.getElementById('content').innerHTML=html;
+}
+fetch('prices.json').then(function(r){return r.json()}).then(function(d){
+DATA=d;
+document.getElementById('update').innerText = d.lastUpdate ? 'آخر تحديث: '+d.lastUpdate : '';
+if(IMAGES.logo){
+const img=document.getElementById('logoImg');
+img.src=IMAGES.logo;
+document.getElementById('logoText').style.display='none';
+} else {
+document.getElementById('logoImg').style.display='none';
+}
+if(d.announcement){
+const a=document.getElementById('announcement');
+a.style.display='block'; a.innerText=d.announcement;
+}
+let info='';
+if(d.address) info += '📍 '+d.address+'<br>';
+if(d.workingHours) info += '🕐 '+d.workingHours+'<br>';
+document.getElementById('info').innerHTML=info;
+let s='';
+if(d.instagram) s+='<a href="'+d.instagram+'" target="_blank" style="background:#E1306C">انستغرام</a>';
+if(d.facebook) s+='<a href="'+d.facebook+'" target="_blank" style="background:#1877F2">فيسبوك</a>';
+if(d.tiktok) s+='<a href="'+d.tiktok+'" target="_blank" style="background:#000;border:1px solid #333">تيك توك</a>';
+document.getElementById('socials').innerHTML=s;
+let f='';
+if(d.whatsapp) f+='للطلب عبر واتساب: +'+d.whatsapp+'<br>';
+f+='Mobile King © 2026';
+document.getElementById('footer').innerHTML=f;
+show('alfa',document.querySelector('.tab.alfa'));
+});
+</script>
+</body>
+</html>

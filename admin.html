@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تعديل أسعار Mobile King</title>
+<style>
+*{box-sizing:border-box;font-family:Tahoma} body{padding:16px;max-width:800px;margin:auto;background:#f6f6f6} input{width:100%;padding:10px;margin:4px 0 10px;border:1px solid #ccc;border-radius:8px} h2{margin-top:30px} h3{margin-top:20px} label{font-weight:700;font-size:14px} button{background:#111;color:#fff;padding:14px 20px;border:0;border-radius:10px;font-size:18px;width:100%;cursor:pointer;margin-top:20px} .row{display:grid;grid-template-columns:1fr 1fr;gap:10px} .box{background:#fff;padding:16px;border-radius:14px;margin-top:16px}
+</style>
+</head>
+<body>
+<h1>تعديل أسعار Mobile King</h1>
+<div class="box">
+<h2>معلومات المحل</h2>
+<label>اسم المحل</label><input id="store">
+<label>رقم واتساب بدون +</label><input id="whatsapp">
+<label>العنوان</label><input id="address">
+<label>رابط انستغرام</label><input id="instagram">
+<label>رابط فيسبوك</label><input id="facebook">
+<label>رابط تيك توك</label><input id="tiktok">
+<label>ساعات الدوام</label><input id="workingHours">
+<label>اعلان مهم</label><input id="announcement">
+</div>
+<div class="box">
+<h2>ألفا - U_share</h2>
+<div id="alfa-ushare"></div>
+<h2>ألفا - دولارات</h2>
+<div id="alfa-dollars"></div>
+<h2>ألفا - ايام صلاحية</h2>
+<div id="alfa-days"></div>
+<h2>ألفا - تشريجات</h2>
+<div id="alfa-cards"></div>
+</div>
+<div class="box">
+<h2>تاتش - دولارات</h2>
+<div id="touch-dollars"></div>
+<h2>تاتش - ايام صلاحية</h2>
+<div id="touch-days"></div>
+<h2>تاتش - تشريجات</h2>
+<div id="touch-cards"></div>
+</div>
+<button onclick="exportJSON()">تصدير prices.json</button>
+<script>
+let data=null;
+fetch('prices.json').then(function(r){return r.json()}).then(function(d){
+data=d;
+const keys=['store','whatsapp','address','instagram','facebook','tiktok','workingHours','announcement'];
+keys.forEach(function(k){
+const el=document.getElementById(k);
+el.value=data[k] || '';
+el.addEventListener('change',function(){data[k]=el.value});
+});
+build('alfa','ushare','alfa-ushare');
+build('alfa','dollars','alfa-dollars');
+build('alfa','days','alfa-days');
+build('alfa','cards','alfa-cards');
+build('touch','dollars','touch-dollars');
+build('touch','days','touch-days');
+build('touch','cards','touch-cards');
+});
+function build(comp,sec,boxId){
+const box=document.getElementById(boxId);
+box.innerHTML='';
+data[comp][sec].forEach(function(item,i){
+const div=document.createElement('div');
+div.className='row';
+const nameInput=document.createElement('input');
+nameInput.value=item.name;
+nameInput.addEventListener('change',function(){data[comp][sec][i].name=nameInput.value});
+const priceInput=document.createElement('input');
+priceInput.type='number';
+priceInput.value=item.price;
+priceInput.addEventListener('change',function(){data[comp][sec][i].price=Number(priceInput.value)});
+div.appendChild(nameInput);
+div.appendChild(priceInput);
+box.appendChild(div);
+});
+}
+function exportJSON(){
+data.lastUpdate=new Date().toLocaleDateString('en-GB');
+const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+const a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download='prices.json';
+a.click();
+}
+</script>
+</body>
+</html>
