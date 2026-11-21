@@ -2,117 +2,170 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
 <title>Mobile King | شحن ألفا و تاتش</title>
 <style>
-*{box-sizing:border-box;font-family:system-ui,Tahoma} body{margin:0;background:#0f1115;color:#fff;padding:16px}
-.header{text-align:center;padding:20px 10px} .logo{font-size:32px;font-weight:900} .logo span{color:#ffd700}
-.logo-img{max-width:180px;max-height:120px;border-radius:16px;margin:0 auto}
-.sub{color:#aaa;margin-top:6px}
-.announce{display:none;background:#ffd700;color:#000;padding:12px;border-radius:12px;text-align:center;font-weight:800;margin:10px 0}
-.info{text-align:center;color:#aaa;font-size:14px;line-height:1.8}
-.socials{display:flex;gap:10px;justify-content:center;margin:12px 0;flex-wrap:wrap}
-.socials a{padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;color:#fff}
-.tabs{display:flex;gap:10px;position:sticky;top:10px;z-index:10} .tab{flex:1;padding:14px;border:0;border-radius:14px;font-weight:800;font-size:18px;cursor:pointer}
-.tab.alfa{background:#e11d2e;color:#fff} .tab.touch{background:#0070ff;color:#fff} .tab.active{outline:3px solid #ffd700}
-.section{margin-top:22px} .section h2{font-size:20px;margin:0 0 12px} .section-img{width:100%;height:140px;object-fit:cover;border-radius:16px;margin-bottom:12px} .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#1c1f27;border-radius:16px;padding:14px;text-align:center;overflow:hidden} .card b{font-size:18px;display:block}
-.card-img{width:100%;height:110px;object-fit:cover;border-radius:12px;margin-bottom:10px}
-.price{color:#ffd700;font-weight:900;font-size:19px;margin:8px 0} .btn{display:block;background:#25D366;color:#fff;text-decoration:none;padding:10px;border-radius:10px;font-weight:700}
-.footer{text-align:center;color:#888;margin:30px 0;font-size:13px;line-height:1.8}
+:root{--bg:#000;--card:rgba(14,16,21,.6);--card2:rgba(22,26,34,.8);--text:#fff;--muted:#94a3b8;--gold:#ffd700;--gold-grad:linear-gradient(135deg,#fff5b8,#ffd700,#b8860b);--gold-dim:rgba(255,215,0,.15);--alfa:#e11d2e;--touch:#0070ff;--wa:#25D366;--radius:28px;--shadow:0 12px 35px rgba(0,0,0,.6);--glass-border:1px solid rgba(255,255,255,.08)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--bg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:var(--text);user-select:none;-webkit-user-select:none;touch-action:manipulation}
+body{min-height:100dvh;padding:clamp(12px,3vw,24px);padding-bottom:100px;position:relative;overflow-x:hidden}
+.bg-blobs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
+.bg-blobs .blob{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;animation:floatBlob 25s ease-in-out infinite}
+.bg-blobs .b1{width:150px;height:150px;top:10%;right:10%;background:radial-gradient(circle,rgba(255,215,0,.18),transparent 70%);animation-duration:28s}
+.bg-blobs .b2{width:140px;height:140px;top:30%;left:5%;background:radial-gradient(circle,rgba(225,29,46,.18),transparent 70%);animation-duration:32s;animation-delay:-7s}
+.bg-blobs .b3{width:180px;height:180px;bottom:20%;left:30%;background:radial-gradient(circle,rgba(0,112,255,.15),transparent 70%);animation-duration:36s;animation-delay:-14s}
+.bg-blobs .b4{width:120px;height:120px;top:60%;right:15%;background:radial-gradient(circle,rgba(180,60,255,.15),transparent 70%);animation-duration:30s;animation-delay:-4s}
+@keyframes floatBlob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-40px) scale(1.1)}66%{transform:translate(-30px,30px) scale(.9)}}
+@media (prefers-reduced-motion:reduce){.bg-blobs .blob{animation:none}}
+.wrap{max-width:900px;margin:0 auto;position:relative;z-index:1}
+header.hero{display:flex;align-items:center;justify-content:flex-start;gap:16px;padding:12px;margin-bottom:12px;background:var(--card);border-radius:24px;border:var(--glass-border);backdrop-filter:blur(12px);position:relative;transition:all .3s ease;animation:fadeIn .5s ease both}
+header.hero .logo-wrap{display:flex;align-items:center;gap:12px}
+header.hero .logo-img{width:clamp(50px,14vw,70px);height:clamp(50px,14vw,70px);border-radius:16px;object-fit:cover;box-shadow:0 0 20px rgba(255,215,0,.15);border:2px solid rgba(255,215,0,.3);background:var(--bg);transition:all .3s}
+header.hero .logo-text{font-size:clamp(20px,6vw,26px);font-weight:900;letter-spacing:-.5px;margin:0;text-align:right;line-height:1.2}
+header.hero .logo-text span{color:var(--gold)}
+header.hero .sub{color:var(--muted);font-size:clamp(12px,3vw,14px);margin-top:2px}
+header.hero.compact{padding:8px 12px;margin-bottom:20px}
+header.hero.compact .logo-img{width:40px;height:40px;border-radius:12px;border:none;box-shadow:none}
+header.hero.compact .logo-text{font-size:18px}
+header.hero.compact .sub,header.hero.compact .pill,header.hero.compact .btn-download-top{display:none!important}
+.pill{display:none;position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);font-size:clamp(10px,2.5vw,11px);color:var(--muted);border:var(--glass-border);font-weight:600}
+header.hero:not(.compact) .pill{display:inline-block}
+.btn-download-top{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.05);border:var(--glass-border);color:var(--text);padding:6px 12px;border-radius:10px;display:flex;align-items:center;gap:6px;text-decoration:none;font-size:clamp(11px,3vw,13px);font-weight:700;transition:all .2s}
+.btn-download-top:hover{background:rgba(255,215,0,.15);border-color:var(--gold);color:var(--gold)}
+.btn-download-top svg{width:16px;height:16px;fill:currentColor}
+.announce{display:none;background:linear-gradient(90deg,var(--gold),#ffb800);color:#000;padding:12px 16px;border-radius:14px;text-align:center;font-weight:800;margin:16px 0;animation:pulse 2.4s ease-in-out infinite;font-size:clamp(13px,3.5vw,15px);box-shadow:0 4px 15px rgba(255,215,0,.2)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.info{text-align:center;color:var(--muted);font-size:clamp(12px,3.5vw,14px);line-height:1.8;margin-top:8px}
+.info-item{display:inline-flex;align-items:center;gap:6px;margin:0 8px}
+.info-item svg{width:16px;height:16px;fill:var(--gold)}
+.socials{display:flex;gap:10px;justify-content:center;margin:16px 0;flex-wrap:wrap}
+.socials a{padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:700;color:#fff;font-size:clamp(12px,3.5vw,14px);transition:transform .2s,filter .2s;display:inline-flex;align-items:center;gap:6px;backdrop-filter:blur(10px)}
+.socials a svg{width:16px;height:16px;fill:currentColor}
+.socials a:hover{transform:translateY(-3px);filter:brightness(1.15)}
+.fab-back{position:fixed;bottom:24px;right:24px;z-index:100;height:54px;padding:0 24px;border-radius:50px;background:var(--gold-grad);color:#000;border:none;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-size:16px;font-weight:800;box-shadow:0 8px 25px rgba(255,215,0,.4),0 0 0 1px rgba(255,255,255,.2) inset;cursor:pointer;transition:transform .3s cubic-bezier(.175,.885,.32,1.275),opacity .3s;opacity:0;pointer-events:none;transform:translateY(20px) scale(.8)}
+.fab-back.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);animation:fabPulse 2s infinite}
+.fab-back:hover{transform:scale(1.05);background:linear-gradient(135deg,#fff,#ffd700);box-shadow:0 10px 30px rgba(255,215,0,.6)}
+.fab-back:active{transform:scale(.95)}
+.fab-back svg{width:22px;height:22px;fill:currentColor}
+@keyframes fabPulse{0%{box-shadow:0 8px 25px rgba(255,215,0,.4),0 0 0 0 rgba(255,215,0,.4)}70%{box-shadow:0 8px 25px rgba(255,215,0,.4),0 0 0 15px rgba(255,215,0,0)}100%{box-shadow:0 8px 25px rgba(255,215,0,.4),0 0 0 0 rgba(255,215,0,0)}}
+.bg-card{position:relative;border-radius:var(--radius);cursor:pointer;overflow:hidden;color:#fff;text-align:right;padding:0;display:block;box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease;background-color:var(--card);background-size:cover;background-position:center;background-repeat:no-repeat;border:var(--glass-border);width:100%;font-family:inherit;opacity:0;animation:cardFadeIn .6s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes cardFadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.bg-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 40px rgba(0,0,0,.8),0 0 20px var(--gold-dim);border-color:rgba(255,215,0,.5)}
+.bg-card:active{transform:translateY(-2px) scale(.98)}
+.bg-card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.85) 70%,rgba(0,0,0,.95) 100%);transition:background .3s}
+.bg-card:hover::before{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.75) 70%,rgba(0,0,0,.9) 100%)}
+.bg-card .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(16px,4vw,22px);gap:4px}
+.bg-card .t{font-weight:900;font-size:clamp(20px,5vw,24px);text-shadow:0 2px 10px #000,0 4px 20px rgba(0,0,0,.8);letter-spacing:.3px}
+.bg-card .d{font-size:clamp(13px,3.5vw,15px);color:#d1d5db;text-shadow:0 2px 8px #000;font-weight:700}
+.bg-card .badge{position:absolute;top:16px;left:16px;z-index:3;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;font-size:clamp(11px,2.5vw,12px);font-weight:800;color:var(--gold);border:1px solid var(--gold-dim)}
+.bg-card .arrow{position:absolute;bottom:clamp(16px,4vw,22px);left:clamp(16px,4vw,22px);z-index:3;font-size:22px;opacity:.9;transition:transform .3s;display:flex;align-items:center}
+.bg-card .arrow svg{width:22px;height:22px;fill:currentColor}
+.bg-card:hover .arrow{transform:translateX(-6px)}
+.bg-card.alfa::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(225,29,46,.4),rgba(138,15,26,.5));mix-blend-mode:multiply;pointer-events:none}
+.bg-card.touch::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(0,112,255,.4),rgba(0,58,153,.5));mix-blend-mode:multiply;pointer-events:none}
+.choice{display:flex;flex-direction:column;gap:30px;margin-top:24px}
+.choice .bg-card{width:100%;min-height:240px}
+.choice .bg-card .content{min-height:240px;padding:30px}
+.choice .bg-card .t{font-size:clamp(28px,7vw,36px)}
+.choice .bg-card .d{font-size:clamp(15px,4vw,18px)}
+.services-portal{margin-top:30px;min-height:240px;background-color:var(--card);border:1px solid rgba(255,215,0,.3);box-shadow:0 0 30px rgba(255,215,0,.1),var(--shadow)}
+.services-portal::before{background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.85) 70%,rgba(0,0,0,.95) 100%)}
+.services-portal:hover::before{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.75) 70%,rgba(0,0,0,.9) 100%)}
+.services-portal::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(0,0,0,0));pointer-events:none}
+.services-portal .t{font-size:clamp(22px,6vw,26px);color:var(--gold);text-shadow:0 0 10px rgba(255,215,0,.3)}
+.services-portal .d{font-size:clamp(13px,3.5vw,15px);color:#fff;opacity:.9}
+.services-portal .badge{background:var(--gold);color:#000;border:none;font-weight:900}
+.services-portal .content{min-height:240px;justify-content:flex-end}
+.services-page{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(20px,5vw,40px) 0;animation:fadeIn .6s cubic-bezier(.16,1,.3,1) both}
+.services-page .hero-logo{width:clamp(140px,40vw,220px);height:clamp(140px,40vw,220px);border-radius:50%;object-fit:cover;margin-bottom:24px;border:4px solid var(--gold);box-shadow:0 0 60px rgba(255,215,0,.3),0 0 100px rgba(255,215,0,.1);animation:floatLogo 4s ease-in-out infinite;background:var(--card)}
+@keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.services-page .glass-panel{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:var(--glass-border);border-radius:24px;padding:clamp(20px,5vw,32px);width:100%;max-width:600px;box-shadow:var(--shadow)}
+.services-page .title{font-size:clamp(24px,7vw,32px);font-weight:900;margin:0 0 16px;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.services-page .desc{font-size:clamp(15px,4vw,18px);line-height:1.8;color:#e2e8f0;margin:0 0 24px;font-weight:600}
+.services-page .desc strong{color:var(--gold)}
+.btn-wa-large{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#25D366,#1da851);color:#fff;text-decoration:none;padding:16px 32px;border-radius:16px;font-weight:900;font-size:clamp(16px,4.5vw,20px);box-shadow:0 8px 25px rgba(37,211,102,.4);transition:all .2s;width:100%;animation:pulseBtn 2s infinite}
+.btn-wa-large:hover{transform:scale(1.02);box-shadow:0 12px 35px rgba(37,211,102,.6)}
+.btn-wa-large svg{width:24px;height:24px;fill:currentColor}
+@keyframes pulseBtn{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.sections{display:flex;flex-direction:column;gap:30px;margin-top:20px}
+.sections .bg-card{width:100%;min-height:180px}
+.sections .bg-card .content{min-height:180px;padding:24px}
+.sections .bg-card .t{font-size:clamp(22px,6vw,28px)}
+.sections .bg-card .d{font-size:clamp(14px,4vw,16px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(140px,40vw,170px),1fr));gap:clamp(12px,3vw,16px);margin-top:20px}
+@media (max-width:400px){.grid{grid-template-columns:1fr 1fr}}
+.item{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:var(--glass-border);border-radius:24px;padding:clamp(12px,3vw,16px);text-align:center;display:flex;flex-direction:column;gap:8px;transition:transform .3s ease,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+.item:hover{transform:translateY(-5px);border-color:rgba(255,215,0,.5);box-shadow:0 12px 30px rgba(0,0,0,.6)}
+.item img{width:100%;height:clamp(80px,20vw,105px);object-fit:cover;border-radius:16px;background:var(--card2);margin-bottom:4px;box-shadow:0 6px 15px rgba(0,0,0,.5);transition:transform .3s}
+.item:hover img{transform:scale(1.05)}
+.item .n{font-weight:800;font-size:clamp(15px,4vw,17px);color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.item .p{font-weight:900;font-size:clamp(18px,5vw,22px);background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.item .cur{font-size:clamp(11px,3vw,12px);color:var(--muted);font-weight:700;margin-bottom:8px}
+.btn-wa{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25D366,#1da851);color:#fff;text-decoration:none;padding:clamp(10px,3vw,12px);border-radius:12px;font-weight:800;font-size:clamp(13px,3.5vw,14px);transition:all .2s;box-shadow:0 4px 12px rgba(37,211,102,.3)}
+.btn-wa svg{width:18px;height:18px;fill:currentColor}
+.btn-wa:hover{filter:brightness(1.15);transform:scale(1.03);box-shadow:0 6px 20px rgba(37,211,102,.5)}
+.fade-in{animation:fadeIn .5s cubic-bezier(.16,1,.3,1) both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.footer{text-align:center;color:var(--muted);margin:40px 0 20px;font-size:clamp(12px,3.5vw,13px);line-height:1.9;font-weight:600}
+.footer-wa{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);padding:10px 20px;border-radius:14px;border:1px solid rgba(255,255,255,.1);transition:all .2s;direction:ltr}
+.footer-wa:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.footer-wa svg{width:18px;height:18px;fill:var(--wa)}
+.footer .copy{margin-top:16px;display:block;font-size:.9em;opacity:.7}
+.dev-credit{display:inline-block;margin-top:12px;font-size:clamp(10px,3vw,12px);color:var(--muted);text-decoration:none;transition:color .2s;opacity:.5}
+.dev-credit:hover{color:var(--gold);opacity:1}
 </style>
 </head>
 <body>
-<div class="header"><img id="logoImg" class="logo-img" alt=""><div class="logo" id="logoText">Mobile <span>King</span></div><div class="sub">شحن ألفا و تاتش - الأسعار بالليرة اللبنانية</div><div class="sub" id="update"></div></div>
-<div id="announcement" class="announce"></div>
-<div id="info" class="info"></div>
-<div id="socials" class="socials"></div>
-<div class="tabs"><button class="tab alfa active" onclick="show('alfa',this)">Alfa ألفا</button><button class="tab touch" onclick="show('touch',this)">Touch تاتش</button></div>
-<div id="content"></div>
-<div class="footer" id="footer"></div>
+<div class="bg-blobs" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></div>
+<div class="wrap">
+  <header class="hero" id="mainHeader">
+    <div class="logo-wrap">
+      <img id="logoImg" class="logo-img" alt="Mobile King">
+      <div>
+        <div class="logo-text" id="logoText">Mobile <span>King</span></div>
+        <div class="sub">شحن ألفا و تاتش — الأسعار بالليرة اللبنانية</div>
+      </div>
+    </div>
+    <a id="downloadBtn" class="btn-download-top" href="#" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg><span>تحميل</span>
+    </a>
+    <div class="pill" id="update">...</div>
+  </header>
+  <div id="announcement" class="announce"></div>
+  <div id="info" class="info"></div>
+  <div id="socials" class="socials"></div>
+  <main id="view"></main>
+  <div class="footer" id="footer"></div>
+</div>
+<button class="fab-back" id="fabBack"><svg viewBox="0 0 24 24"><path d="M4 11h12.17l-5.59-5.59L12 4l8 8-8 8-1.41-1.41L16.17 13H4v-2z"/></svg><span>رجوع</span></button>
+
 <script>
-const IMAGES = {
-logo: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/logo.jpg",
-alfa_ushare: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfaushare.jpg",
-alfa_dollars: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfadolars.jpg",
-alfa_days: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfadays.jpg",
-touch_dollars: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchdolars.jpg",
-touch_days: "",
-alfa_card_0: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard450.jpg",
-alfa_card_1: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard758.jpg",
-alfa_card_2: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard1515.jpg",
-alfa_card_3: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard2273.jpg",
-touch_card_0: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard450.jpg",
-touch_card_1: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard758.jpg",
-touch_card_2: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard1515.jpg",
-touch_card_3: "https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard2273.jpg"
-};
-let DATA=null;
-function fmt(n){return n.toLocaleString('en-US')}
-function getSectionImage(type,key){
-if(type==='alfa' && key==='ushare') return IMAGES.alfa_ushare;
-if(type==='alfa' && key==='dollars') return IMAGES.alfa_dollars;
-if(type==='alfa' && key==='days') return IMAGES.alfa_days;
-if(type==='touch' && key==='dollars') return IMAGES.touch_dollars;
-if(type==='touch' && key==='days') return IMAGES.touch_days;
-return '';
-}
-function getCardImage(type,index){
-if(type==='alfa') return IMAGES['alfa_card_'+index];
-if(type==='touch') return IMAGES['touch_card_'+index];
-return '';
-}
-function show(type,btn){
-document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active')}); btn.classList.add('active');
-let html='';
-const sections = type==='alfa' ? [['U_share','ushare'],['دولارات','dollars'],['ايام صلاحية','days'],['تشريجات','cards']] : [['دولارات','dollars'],['ايام صلاحية','days'],['تشريجات','cards']];
-sections.forEach(function(sec){
-const title=sec[0]; const key=sec[1];
-const secImg=getSectionImage(type,key);
-html+='<div class="section"><h2>'+title+' - '+(type==='alfa'?'ألفا':'تاتش')+'</h2>';
-if(secImg) html+='<img src="'+secImg+'" class="section-img">';
-html+='<div class="grid">';
-DATA[type][key].forEach(function(item,i){
-const msg = encodeURIComponent('مرحبا Mobile King، بدي اطلب '+title+' '+type+' - '+item.name+' بسعر '+fmt(item.price)+' ل.ل');
-let cardImg='';
-if(key==='cards') cardImg=getCardImage(type,i);
-html+='<div class="card">';
-if(cardImg) html+='<img src="'+cardImg+'" class="card-img">';
-html+='<b>'+item.name+'</b><div class="price">'+fmt(item.price)+' ل.ل</div><a class="btn" href="https://wa.me/'+DATA.whatsapp+'?text='+msg+'" target="_blank">اطلب واتساب</a></div>';
-});
-html+='</div></div>';
-});
-document.getElementById('content').innerHTML=html;
-}
-fetch('prices.json').then(function(r){return r.json()}).then(function(d){
-DATA=d;
-document.getElementById('update').innerText = d.lastUpdate ? 'آخر تحديث: '+d.lastUpdate : '';
-if(IMAGES.logo){
-const img=document.getElementById('logoImg');
-img.src=IMAGES.logo;
-document.getElementById('logoText').style.display='none';
-} else {
-document.getElementById('logoImg').style.display='none';
-}
-if(d.announcement){
-const a=document.getElementById('announcement');
-a.style.display='block'; a.innerText=d.announcement;
-}
-let info='';
-if(d.address) info += '📍 '+d.address+'<br>';
-if(d.workingHours) info += '🕐 '+d.workingHours+'<br>';
-document.getElementById('info').innerHTML=info;
-let s='';
-if(d.instagram) s+='<a href="'+d.instagram+'" target="_blank" style="background:#E1306C">انستغرام</a>';
-if(d.facebook) s+='<a href="'+d.facebook+'" target="_blank" style="background:#1877F2">فيسبوك</a>';
-if(d.tiktok) s+='<a href="'+d.tiktok+'" target="_blank" style="background:#000;border:1px solid #333">تيك توك</a>';
-document.getElementById('socials').innerHTML=s;
-let f='';
-if(d.whatsapp) f+='للطلب عبر واتساب: +'+d.whatsapp+'<br>';
-f+='Mobile King © 2026';
-document.getElementById('footer').innerHTML=f;
-show('alfa',document.querySelector('.tab.alfa'));
-});
+const DOWNLOAD_LINK="#";
+const STORAGE_KEY="mk_prices_cache";
+const FALLBACK_DATA={store:"Mobile King",whatsapp:"96176167082",currency:"ل.ل",lastUpdate:"-",address:"",instagram:"",facebook:"",tiktok:"",workingHours:"",announcement:"",alfa:{dollars:[],cards:[],days:[],ushare:[]},touch:{dollars:[],cards:[],days:[]}};
+const SVG={back:'<svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>',arrowLeft:'<svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>',location:'<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>',clock:'<svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>',instagram:'<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>',facebook:'<svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',tiktok:'<svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>',whatsapp:'<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>'};
+const IMAGES={logo:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/logo.jpg",alfa_ushare:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfaushare.jpg",alfa_dollars:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfadolars.jpg",alfa_days:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfadays.jpg",alfa_cards:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard450.jpg",touch_dollars:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchdolars.jpg",touch_days:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchdays.jpg",touch_cards:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard450.jpg",card_alfa_450:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard450.jpg",card_alfa_758:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard758.jpg",card_alfa_1515:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard1515.jpg",card_alfa_2273:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/alfacard2273.jpg",card_touch_450:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard450.jpg",card_touch_758:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard758.jpg",card_touch_1515:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard1515.jpg",card_touch_2273:"https://raw.githubusercontent.com/MAmhaz/mobileking/refs/heads/main/touchcard2273.jpg"};
+const LABELS={alfa:{name:"Alfa ألفا",color:"#e11d2e",cls:"alfa"},touch:{name:"Touch تاتش",color:"#0070ff",cls:"touch"}};
+const SECTIONS={alfa:[{key:"cards",title:"تشريج",desc:"بطاقات تشريج ألفا",img:"alfa_cards"},{key:"dollars",title:"دولارات",desc:"باقات دولار لألفا",img:"alfa_dollars"},{key:"days",title:"أيام",desc:"صلاحية الخط",img:"alfa_days"},{key:"ushare",title:"U_share",desc:"باقات يو شير",img:"alfa_ushare"}],touch:[{key:"cards",title:"تشريج",desc:"بطاقات تشريج تاتش",img:"touch_cards"},{key:"dollars",title:"دولارات",desc:"باقات دولار لتاتش",img:"touch_dollars"},{key:"days",title:"أيام",desc:"صلاحية الخط",img:"touch_days"}]};
+const CURRENCY="ل.ل";let DATA=null;
+const $=(id)=>document.getElementById(id);
+const fmt=(n)=>Number(n).toLocaleString('en-US');
+function cardImageKey(comp,name){const digits=String(name).replace(/[^\d]/g,"");return `card_${comp}_${digits}`}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function bgStyle(imgKey){const url=IMAGES[imgKey];return url?`background-image:url('${url}')`:""}
+function updateHeader(isHome){const header=$("mainHeader");if(isHome){header.classList.remove("compact")}else{header.classList.add("compact")}}
+function render(){if(!DATA)return;const hash=location.hash.replace(/^#\/?/,"");const parts=hash.split("/").filter(Boolean);const comp=parts[0];const sec=parts[1];const fabBack=$("fabBack");const isHome=!comp;updateHeader(isHome);const footerWa=document.getElementById("footer-wa-btn");if(footerWa)footerWa.style.display=isHome?"inline-flex":"none";if(isHome){fabBack.classList.remove("show");renderHome()}else if(comp==='services'){fabBack.classList.add("show");fabBack.onclick=()=>go('');renderServices()}else if(comp&&!sec){fabBack.classList.add("show");fabBack.onclick=()=>go('');renderSections(comp)}else if(comp&&sec){fabBack.classList.add("show");fabBack.onclick=()=>go(comp);renderItems(comp,sec)}else{location.hash="#/"}}
+function renderHome(){const v=$("view");const alfaImg=IMAGES.alfa_dollars||IMAGES.alfa_cards;const touchImg=IMAGES.touch_dollars;const logoImg=IMAGES.logo;v.innerHTML=`<div class="choice fade-in"><button class="bg-card ${LABELS.alfa.cls}" style="${alfaImg?`background-image:url('${alfaImg}')`:''}" onclick="go('alfa')"><div class="content"><div class="t">Alfa</div><div class="d">ألفا — باقات و دولارات و تشريج</div></div><span class="arrow">${SVG.arrowLeft}</span></button><button class="bg-card ${LABELS.touch.cls}" style="${touchImg?`background-image:url('${touchImg}')`:''}" onclick="go('touch')"><div class="content"><div class="t">Touch</div><div class="d">تاتش — باقات و دولارات و تشريج</div></div><span class="arrow">${SVG.arrowLeft}</span></button></div><button class="bg-card services-portal fade-in" style="${logoImg?`background-image:url('${logoImg}')`:''}" onclick="go('services')"><span class="badge">جديد</span><div class="content"><div class="t">خدمات إضافية مميزة</div><div class="d">ألعاب، صيانة، سحب رصيد والمزيد...</div></div><span class="arrow" style="color:var(--gold)">${SVG.arrowLeft}</span></button>`}
+function renderServices(){const v=$("view");const logo=IMAGES.logo;const wa=DATA.whatsapp;v.innerHTML=`<div class="services-page"><img src="${logo}" alt="Mobile King" class="hero-logo" onerror="this.style.display='none'"><div class="glass-panel"><h2 class="title">خدماتنا المميزة</h2><p class="desc">يوجد لدينا <strong>شحن ألعاب</strong>، <strong>صيانة</strong>، <strong>سحب رصيد</strong>، و<strong>تحويل</strong>.<br><br>للمزيد من التفاصيل تواصل معنا عبر واتساب.</p><a class="btn-wa-large" href="https://wa.me/${encodeURIComponent(wa)}?text=${encodeURIComponent('مرحبا Mobile King، أريد الاستفسار عن الخدمات الإضافية (شحن ألعاب، صيانة، سحب رصيد، تحويل)')}" target="_blank" rel="noopener">${SVG.whatsapp} تواصل معنا الآن</a></div></div>`}
+function renderSections(comp){const v=$("view");const secs=SECTIONS[comp];const color=LABELS[comp].color;v.innerHTML=`<div class="sections fade-in">${secs.map(s=>`<button class="bg-card" style="${bgStyle(s.img)};border:1px solid ${color}40;" onclick="go('${comp}/${s.key}')"><span class="badge">${(DATA[comp][s.key]||[]).length} خيار</span><div class="content"><div class="t">${s.title}</div><div class="d">${s.desc}</div></div><span class="arrow" style="color:var(--gold)">${SVG.arrowLeft}</span></button>`).join("")}</div>`}
+function renderItems(comp,secKey){const v=$("view");const items=(DATA[comp][secKey]||[]);const s=SECTIONS[comp].find(x=>x.key===secKey);const color=LABELS[comp].color;const title=s?s.title:secKey;if(!items.length){v.innerHTML=`<div class="item fade-in" style="grid-column:1/-1">لا توجد عناصر حالياً.</div>`;return}v.innerHTML=`<div class="grid fade-in">${items.map((it,index)=>{const imgKey=secKey==='cards'?cardImageKey(comp,it.name):null;const imgSrc=imgKey?IMAGES[imgKey]:null;const msg=encodeURIComponent(`مرحبا Mobile King، بدي اطلب ${title} - ${comp==='alfa'?'ألفا':'تاتش'} - ${it.name} بسعر ${fmt(it.price)} ${CURRENCY}`);const delay=Math.min(index*.05,.4);return`<div class="item" style="border-top:3px solid ${color};animation-delay:${delay}s">${imgSrc?`<img src="${imgSrc}" alt="" onerror="this.style.display='none'">`:""}<div class="n">${escapeHtml(it.name)}</div><div class="p">${fmt(it.price)}</div><div class="cur">${CURRENCY}</div><a class="btn-wa" href="https://wa.me/${encodeURIComponent(DATA.whatsapp)}?text=${msg}" target="_blank" rel="noopener">${SVG.whatsapp} اطلب واتساب</a></div>`}).join("")}</div>`}
+function go(path){location.hash="#/"+path}
+window.addEventListener("hashchange",render);
+function initUI(data){DATA=data;const img=$("logoImg");img.src=IMAGES.logo;img.onerror=()=>{img.style.display='none';$("logoText").style.display='block'};const dlBtn=$("downloadBtn");if(DOWNLOAD_LINK&&DOWNLOAD_LINK!=="#"){dlBtn.href=DOWNLOAD_LINK;dlBtn.style.display="flex"}else{dlBtn.style.display="none"}$("update").textContent=DATA.lastUpdate?`آخر تحديث: ${DATA.lastUpdate}`:"";if(DATA.announcement){const a=$("announcement");a.style.display="block";a.textContent=DATA.announcement}let info="";if(DATA.address)info+=`<span class="info-item">${SVG.location} ${escapeHtml(DATA.address)}</span>`;if(DATA.workingHours)info+=`<span class="info-item">${SVG.clock} ${escapeHtml(DATA.workingHours)}</span>`;$("info").innerHTML=info;let s="";if(DATA.instagram)s+=`<a href="${encodeURI(DATA.instagram)}" target="_blank" rel="noopener" style="background:#E1306C">${SVG.instagram} انستغرام</a>`;if(DATA.facebook)s+=`<a href="${encodeURI(DATA.facebook)}" target="_blank" rel="noopener" style="background:#1877F2">${SVG.facebook} فيسبوك</a>`;if(DATA.tiktok)s+=`<a href="${encodeURI(DATA.tiktok)}" target="_blank" rel="noopener" style="background:#000;border:1px solid #333">${SVG.tiktok} تيك توك</a>`;$("socials").innerHTML=s;const currentYear=new Date().getFullYear();let f="";if(DATA.whatsapp){f+=`<a id="footer-wa-btn" class="footer-wa" href="https://wa.me/${encodeURIComponent(DATA.whatsapp)}" target="_blank" rel="noopener">${SVG.whatsapp} WhatsApp: +${escapeHtml(DATA.whatsapp)}</a>`}f+=`<span class="copy">Mobile King &copy; ${currentYear}</span>`;f+=`<a class="dev-credit" href="https://t.me/mamhaz_bot" target="_blank">برمجة: mamhaz</a>`;$("footer").innerHTML=f;if(!location.hash)location.hash="#/";render()}
+const cachedData=localStorage.getItem(STORAGE_KEY);
+if(cachedData){try{initUI(JSON.parse(cachedData))}catch(e){}}
+fetch('https://cdn.jsdelivr.net/gh/MAmhaz/mobileking@main/prices.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error("Network response was not ok");return r.json()}).then(d=>{localStorage.setItem(STORAGE_KEY,JSON.stringify(d));initUI(d)}).catch(err=>{console.warn("لم يتم جلب البيانات من الشبكة، يتم الاعتماد على البيانات المحفوظة.",err);if(!cachedData){initUI(FALLBACK_DATA)}});
 </script>
 </body>
 </html>

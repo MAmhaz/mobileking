@@ -10,67 +10,67 @@
   "workingHours": "",
   "announcement": "",
   "alfa": {
-    "ushare": [
-      {"name": "5.5 GB", "price": 630000},
-      {"name": "11 GB", "price": 850000},
-      {"name": "22 GB", "price": 1180000},
-      {"name": "33 GB", "price": 1350000},
-      {"name": "44 GB", "price": 1800000},
-      {"name": "56 GB", "price": 2100000},
-      {"name": "67 GB", "price": 2450000},
-      {"name": "78 GB", "price": 2750000},
-      {"name": "89 GB", "price": 3000000},
-      {"name": "100 GB", "price": 3350000}
-    ],
     "dollars": [
-      {"name": "1$", "price": 110000},
-      {"name": "2$", "price": 205000},
-      {"name": "3$", "price": 300000},
-      {"name": "4$", "price": 410000},
-      {"name": "5$", "price": 505000},
-      {"name": "6$", "price": 600000},
-      {"name": "7$", "price": 710000},
-      {"name": "8$", "price": 805000},
-      {"name": "9$", "price": 900000},
-      {"name": "10$", "price": 1010000}
-    ],
-    "days": [
-      {"name": "شهر", "price": 250000},
-      {"name": "شهرين", "price": 450000},
-      {"name": "3 اشهر", "price": 600000},
-      {"name": "سنة", "price": 1000000}
+      { "name": "1$",  "price": 110000 },
+      { "name": "2$",  "price": 205000 },
+      { "name": "3$",  "price": 300000 },
+      { "name": "4$",  "price": 410000 },
+      { "name": "5$",  "price": 505000 },
+      { "name": "6$",  "price": 600000 },
+      { "name": "7$",  "price": 710000 },
+      { "name": "8$",  "price": 805000 },
+      { "name": "9$",  "price": 900000 },
+      { "name": "10$", "price": 1010000 }
     ],
     "cards": [
-      {"name": "4.50", "price": 490000},
-      {"name": "7.58", "price": 790000},
-      {"name": "15.15", "price": 1599000},
-      {"name": "22.73", "price": 2299000}
+      { "name": "4.50",  "price": 490000 },
+      { "name": "7.58",  "price": 790000 },
+      { "name": "15.15", "price": 1599000 },
+      { "name": "22.73", "price": 2299000 }
+    ],
+    "days": [
+      { "name": "شهر",     "price": 250000 },
+      { "name": "شهرين",   "price": 450000 },
+      { "name": "3 اشهر",  "price": 600000 },
+      { "name": "سنة",     "price": 1000000 }
+    ],
+    "ushare": [
+      { "name": "5.5 GB",  "price": 630000 },
+      { "name": "11 GB",   "price": 850000 },
+      { "name": "22 GB",   "price": 1180000 },
+      { "name": "33 GB",   "price": 1350000 },
+      { "name": "44 GB",   "price": 1800000 },
+      { "name": "56 GB",   "price": 2100000 },
+      { "name": "67 GB",   "price": 2450000 },
+      { "name": "78 GB",   "price": 2750000 },
+      { "name": "89 GB",   "price": 3000000 },
+      { "name": "100 GB",  "price": 3350000 }
     ]
   },
   "touch": {
     "dollars": [
-      {"name": "1$", "price": 100000},
-      {"name": "2$", "price": 200000},
-      {"name": "3$", "price": 300000},
-      {"name": "4$", "price": 400000},
-      {"name": "5$", "price": 500000},
-      {"name": "6$", "price": 600000},
-      {"name": "7$", "price": 700000},
-      {"name": "8$", "price": 800000},
-      {"name": "9$", "price": 900000},
-      {"name": "10$", "price": 1000000}
-    ],
-    "days": [
-      {"name": "شهر", "price": 250000},
-      {"name": "شهرين", "price": 500000},
-      {"name": "3 اشهر", "price": 650000},
-      {"name": "سنة", "price": 1800000}
+      { "name": "1$",  "price": 100000 },
+      { "name": "2$",  "price": 200000 },
+      { "name": "3$",  "price": 300000 },
+      { "name": "4$",  "price": 400000 },
+      { "name": "5$",  "price": 500000 },
+      { "name": "6$",  "price": 600000 },
+      { "name": "7$",  "price": 700000 },
+      { "name": "8$",  "price": 800000 },
+      { "name": "9$",  "price": 900000 },
+      { "name": "10$", "price": 1000000 }
     ],
     "cards": [
-      {"name": "4.50", "price": 485000},
-      {"name": "7.58", "price": 780000},
-      {"name": "15.15", "price": 1550000},
-      {"name": "22.73", "price": 2299000}
+      { "name": "4.50",  "price": 485000 },
+      { "name": "7.58",  "price": 780000 },
+      { "name": "15.15", "price": 1550000 },
+      { "name": "22.73", "price": 2299000 }
+    ],
+    "days": [
+      { "name": "شهر",     "price": 250000 },
+      { "name": "شهرين",   "price": 500000 },
+      { "name": "3 اشهر",  "price": 650000 },
+      { "name": "سنة",     "price": 1800000 }
     ]
   }
 }
